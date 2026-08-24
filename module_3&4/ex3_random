@@ -1,0 +1,10 @@
+import random
+c31 = random.randint(0, 9)
+c32 = random.randint(0, 9)
+c33 = random.randint(0, 9)
+c41 = random.randint(1, 6)
+c42 = random.randint(1, 6)
+c43 = random.randint(1, 6)
+c44 = random.randint(1, 6)
+print(f"The random three-digit code is: {c31}{c32}{c33}")
+print(f"The random four-digit code is: {c41}{c42}{c43}{c44}")
