@@ -1,4 +1,7 @@
 import random
+from item import Item
+from room import Room
+from player import Player 
 
 def item_rarity():
     rarity = random.randint(1, 100)
@@ -10,13 +13,16 @@ def item_rarity():
     else:
         return "legendary"
 
-def add_item(inventory):
-    item = input("What item do you want to add to the inventory? ")
-    rarity = item_rarity()
-    inventory.append(item + " - " + rarity)
+def add_item(player):
+    name = input("What item do you want to add? ")
+    weight = float(input("What is the item's weight? "))
 
-def show_inventory(inventory):
-    print(inventory)
+    item = Item(name, weight)
+    player.items.append(item)
+
+def show_inventory(player):
+    for item in player.items:
+        print(item.name, "-", item.weight, "kg")
 
 def high_scores():
     print("=== HIGH SCORES ===")
@@ -24,10 +30,18 @@ def high_scores():
     print("Anne: 81")
     print("Juha: 67")
 
-inventory = []
+key = Item("Key", 0.1)
+phone = Item("Phone", 0.2)
+
+hall = Room("Hall", key)
+kitchen = Room("Kitchen")
+bedroom = Room("Bedroom", phone)
 
 name = input("What is your name? ")
 age = int(input("How old are you? "))
+
+player = Player(name, hall)
+inventory = player.items
 
 print(f"Name: {name}")
 print(f"Age: {age}")
@@ -52,9 +66,9 @@ else:
         elif command == "instructions":
             print("Here are the instructions for this game:... ")
         elif command == "add item":
-            add_item(inventory)
+            add_item(player)
         elif command == "inventory":  
-            show_inventory(inventory)
+            show_inventory(player)
         elif command == "high scores":
             high_scores()
         elif command == "about":

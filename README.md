@@ -8,3 +8,4 @@ Python exercises for the Metropolia course.
 - Module 3 & 4: Completed
 - Module 5 & 6: Completed
 - Module 7 & 8: Completed
+- Module 9 & 10: Completed
