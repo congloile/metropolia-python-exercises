@@ -1,5 +1,4 @@
 class Item:
-    def __init__(self, name: str, weight: float):
+    def __init__(self, name: str):
         self.name = name
-        self.weight = weight
 

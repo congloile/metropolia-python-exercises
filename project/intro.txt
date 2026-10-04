@@ -1,0 +1,16 @@
+WELCOME TO CL SPIEL
+
+You are getting ready to leave home, but your key and phone are missing.
+
+Explore the rooms, collect the items you need, and find your way out.
+There are different routes you can take to complete your objective.
+
+Along the way, you may also make choices that help reduce unnecessary
+energy use and waste.
+
+Your objective is to:
+- Find the key
+- Find the phone
+- Reach the exit
+
+Good luck!

@@ -1,0 +1,8 @@
+GAME INSTRUCTIONS
+
+- Go to different rooms.
+- Choose where you want to go.
+- Find the key and the phone.
+- Make some good choices for the environment.
+- Go to the exit when you have the items.
+- Type lopeta to stop the game.
