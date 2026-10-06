@@ -17,3 +17,4 @@ class Player:
         if item is not None:
             self.items.append(item)
             self.location.item = None
+            print(f"You collected: {item.name}")

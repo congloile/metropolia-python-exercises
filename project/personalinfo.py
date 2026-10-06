@@ -22,38 +22,67 @@ def item_rarity():
     else:
         return "legendary"
 
-def add_item(player):
-    name = input("What item do you want to add? ")
-
-    item = Item(name, weight)
-    player.items.append(item)
 
 def show_inventory(player):
     for item in player.items:
         print(item.name)
 
+def show_room(player):
+    print(f"\nYou are in the {player.location.name}.")
+
+    if player.location.item is not None:
+        print(f"You see: {player.location.item.name}")
+    else:
+        print("There is no item here.")
+
+def choose_activity():
+    activity = input("Choose activity: 'jogging' or 'work': ")
+
+    while activity != "jogging" and activity != "work":
+        activity = input("Please type 'jogging' or 'work': ")
+
+    return activity
+
 def save_game(player):
-    data = {
-        "name": player.name,
+    try:
+        with open("savegames.json", "r", encoding="utf-8") as file:
+            savegames = json.load(file)
+    except FileNotFoundError:
+        savegames = {}
+
+    savegames[player.name] = {
         "age": player.age,
+        "activity": player.activity,
         "location": player.location.name,
         "items": []
     }
 
     for item in player.items:
-        data["items"].append({
-            "name": item.name,
-            "weight": item.weight
+        savegames[player.name]["items"].append({
+            "name": item.name
         })
 
-    with open("savegame.json", "w", encoding="utf-8") as file:
-        json.dump(data, file, indent=4)
+    with open("savegames.json", "w", encoding="utf-8") as file:
+        json.dump(savegames, file, indent=4)
 
-    print("Game saved.")
+    print(f"Game saved.")
 
 def load_game(rooms):
-    with open("savegame.json", "r", encoding="utf-8") as file:
-        data = json.load(file)
+    with open("savegames.json", "r", encoding="utf-8") as file:
+        savegames = json.load(file)
+
+    print("\nSaved players:")
+
+    for name in savegames:
+        print(f"- {name}")
+
+    selected_name = input("Choose a player: ")
+
+    if selected_name not in savegames:
+        print("Player not found.")
+        return None
+
+    data = savegames[selected_name]
 
     location = rooms[0]
 
@@ -61,15 +90,36 @@ def load_game(rooms):
         if room.name == data["location"]:
             location = room
 
-    player = Player(data["name"], data["age"], location)
+    player = Player(selected_name, data["age"], location)
+    player.activity = data["activity"]
 
     for item_data in data["items"]:
-        item = Item(item_data["name"], item_data["weight"])
+        item = Item(item_data["name"])
         player.items.append(item)
 
     print("Game loaded.")
 
     return player
+
+def game_loop(player):
+    while True:
+        show_room(player)
+
+        print("\n=== GAME MENU ===")
+        print("collect")
+        print("inventory")
+        print("menu")
+
+        action = input("What do you want to do? ")
+
+        if action == "collect":
+            player.collect_item()
+
+        elif action == "inventory":
+            show_inventory(player)
+
+        elif action == "menu":
+            break
 
 def high_scores():
     print("=== HIGH SCORES ===")
@@ -77,72 +127,76 @@ def high_scores():
     print("Anne: 81")
     print("Juha: 67")
 
+shoes = Item("Shoes")
 key = Item("Key")
 phone = Item("Phone")
+laptop = Item("Laptop")
 
-hall = Room("Hall", key)
-kitchen = Room("Kitchen")
+hall = Room("Hall", shoes)
+kitchen = Room("Kitchen", key)
 bedroom = Room("Bedroom", phone)
-rooms = [hall, kitchen, bedroom]
+living_room = Room("Living Room", laptop)
 
-choice = input("New game or continue? Type 'new' or 'cont': ")
+rooms = [hall, kitchen, bedroom, living_room]
 
-if choice == "new":
-    show_intro()
+print("\n=== MAIN MENU ===")
+print("play")
+print("instructions")
+print("inventory")
+print("save")
+print("high scores")
+print("about")
+print("lopeta")
+command = input("Please enter your command: ")
+while command != "lopeta":
+    if command == "play":
+        choice = input("New game or continue? Type 'new' or 'cont': ")
 
-    name = input("What is your name? ")
-    age = int(input("How old are you? "))
+        if choice == "new":
+            show_intro()
 
-    player = Player(name, age, hall)
+            name = input("What is your name? ")
+            age = int(input("How old are you? "))
 
-elif choice == "cont":
-    print("Loading...")
-    player = load_game(rooms)
+            player = Player(name, age, hall)
 
-print(f"Name: {player.name}")
-print(f"Age: {player.age}")
+            print(f"Hello, {player.name}!")
 
-if age < 12:
-    print("You are a minor")
-else:
-    print(f"Hello {name}")
+            activity = choose_activity()
+            player.activity = activity
+            
+            game_loop(player)
 
+        elif choice == "cont":
+            print("Loading...")
+            player = load_game(rooms)
+
+            if player is not None:
+                print(f"Welcome back, {player.name}!")
+                print(f"You are going {player.activity}.")
+                game_loop(player)
+
+    elif command == "instructions":
+            show_instructions()
+    elif command == "inventory":  
+            show_inventory(player)
+    elif command == "save":
+            save_game(player)
+    elif command == "high scores":
+            high_scores()
+    elif command == "about":
+        print("About this game and developer:... ")
+         
     print("\n=== MAIN MENU ===")
     print("play")
     print("instructions")
-    print("add item")
     print("inventory")
     print("save")
     print("high scores")
     print("about")
     print("lopeta")
-    command = input("Please enter your command: ")
-    while command != "lopeta":
-        if command == "play":
-            print("Starting the game")
-        elif command == "instructions":
-            show_instructions()
-        elif command == "add item":
-            add_item(player)
-        elif command == "inventory":  
-            show_inventory(player)
-        elif command == "save":
-            save_game(player)
-        elif command == "high scores":
-            high_scores()
-        elif command == "about":
-            print("About this game and developer:... ")
-         
-        print("\n=== MAIN MENU ===")
-        print("play")
-        print("instructions")
-        print("add item")
-        print("inventory")
-        print("high scores")
-        print("about")
-        print("lopeta")
 
-        command = input("Please enter your command: ")
+    command = input("Please enter your command: ")
 
 
     

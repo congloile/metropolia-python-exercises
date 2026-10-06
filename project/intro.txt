@@ -1,16 +1,13 @@
-WELCOME TO CL SPIEL
+You are getting ready to leave home.
 
-You are getting ready to leave home, but your key and phone are missing.
+Explore the rooms, collect the items you need, and make sustainable choices along the way.
 
-Explore the rooms, collect the items you need, and find your way out.
-There are different routes you can take to complete your objective.
+You can choose between two activities:
+- Jogging
+- Work
 
-Along the way, you may also make choices that help reduce unnecessary
-energy use and waste.
+The items you collect and your final score depend on the activity you choose.
 
-Your objective is to:
-- Find the key
-- Find the phone
-- Reach the exit
+Make good choices along the way.
 
 Good luck!

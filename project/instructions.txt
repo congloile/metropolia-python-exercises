@@ -1,8 +1,24 @@
-GAME INSTRUCTIONS
+=== INSTRUCTIONS ===
 
-- Go to different rooms.
-- Choose where you want to go.
-- Find the key and the phone.
-- Make some good choices for the environment.
-- Go to the exit when you have the items.
-- Type lopeta to stop the game.
+Move between rooms and collect useful items.
+
+Available rooms:
+- Hall
+- Kitchen
+- Bedroom
+- Living Room
+
+You can also perform eco-friendly actions in the rooms.
+
+Jogging:
+- Collect Key and Shoes
+- Complete 3 eco actions
+
+Work:
+- Collect Key and Shoes
+- Complete at least 2 eco actions
+- Phone and Laptop may affect your final score
+
+Return to the Hall when you are ready to leave.
+
+Your choices will affect your final score.
