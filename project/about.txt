@@ -1,0 +1,10 @@
+
+=== ABOUT ===
+
+CL Spiel
+
+A simple text-based adventure game created as a Python programming project.
+
+Developer: Cong Loi Le
+
+Explore rooms, collect items, make eco-friendly choices, complete your objective, and try to achieve the highest score.

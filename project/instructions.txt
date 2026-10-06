@@ -1,24 +1,33 @@
-=== INSTRUCTIONS ===
 
-Move between rooms and collect useful items.
+Explore the rooms, collect useful items, and make eco-friendly choices.
 
-Available rooms:
-- Hall
-- Kitchen
-- Bedroom
-- Living Room
+Game commands:
+- move
+- collect
+- eco
+- save
+- load
+- inventory
+- menu
 
-You can also perform eco-friendly actions in the rooms.
+You need the Key and Shoes to leave the house.
+
+Other items are optional and may be useful depending on your activity.
+Once you collect an item, it cannot be removed from your inventory.
+Choose carefully before collecting an item, because your choices can affect your final score.
+
+Scoring:
+- Base score: 60 points
+- Each eco action: +10 points
 
 Jogging:
-- Collect Key and Shoes
-- Complete 3 eco actions
+- Laptop collected: -10 points
+- Phone collected: -5 points
 
 Work:
-- Collect Key and Shoes
-- Complete at least 2 eco actions
-- Phone and Laptop may affect your final score
+- Phone missing: -10 points
+- Laptop missing: -5 points
 
-Return to the Hall when you are ready to leave.
+Return to the Hall whenever you want to check if you are ready to leave.
 
-Your choices will affect your final score.
+Good luck!

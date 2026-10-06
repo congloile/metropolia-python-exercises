@@ -7,6 +7,7 @@ class Player:
         self.age = age
         self.items: list[Item] = []
         self.location = location
+        self.eco_actions = []
 
     def move(self, destination: Room):
         self.location = destination
