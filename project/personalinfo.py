@@ -34,6 +34,7 @@ def show_room(player):
     else:
         print("There is no item here.")
 
+# Let the player choose one of the available game routes
 def choose_activity():
     activity = input("Choose activity: 'jogging', 'work' or 'shopping': ")
 
@@ -42,6 +43,7 @@ def choose_activity():
 
     return activity
 
+# Restore the original items when starting or loading a game
 def reset_rooms(rooms):
     for room in rooms:
         if room.name == "Hall":
@@ -103,6 +105,7 @@ def eco_action(player):
 
     player.eco_actions.append(room_name)
 
+# Save multiple player profiles in one JSON file
 def save_game(player):
     try:
         with open("savegames.json", "r", encoding="utf-8") as file:
@@ -236,6 +239,7 @@ def has_item(player, item_name):
 
     return False
 
+# Check route-specific win conditions
 def check_win(player):
     has_key = has_item(player, "Key")
     has_shoes = has_item(player, "Shoes")
@@ -253,6 +257,7 @@ def check_win(player):
 
     return False
 
+# Calculate the final score based on eco actions and item choices
 def calculate_score(player):
     score = 60
 
