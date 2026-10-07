@@ -6,6 +6,7 @@ Explore the rooms, collect the items you need, and make sustainable choices alon
 You can choose between two activities:
 - Jogging
 - Work
+- Shopping
 
 The items you collect and your final score depend on the activity you choose.
 

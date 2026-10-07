@@ -35,10 +35,10 @@ def show_room(player):
         print("There is no item here.")
 
 def choose_activity():
-    activity = input("Choose activity: 'jogging' or 'work': ")
+    activity = input("Choose activity: 'jogging', 'work' or 'shopping': ")
 
-    while activity != "jogging" and activity != "work":
-        activity = input("Please type 'jogging' or 'work': ")
+    while activity not in ["jogging", "work", "shopping"]:
+        activity = input("Please type 'jogging', 'work' or 'shopping': ")
 
     return activity
 
@@ -214,14 +214,20 @@ def game_loop(player, rooms):
 
         if player.location.name == "Hall" and check_win(player):
             print("\nYou are ready to leave!")
-            print("You completed your objective.")
 
-            final_score = calculate_score(player)
-            print(f"Final score: {final_score}")
+            leave_now = input("Do you want to leave now? (yes/no): ").lower()
 
-            update_high_score(player, final_score)
+            if leave_now == "yes":
+                print("You completed your objective.")
 
-            break
+                final_score = calculate_score(player)
+                print(f"Final score: {final_score}")
+
+                update_high_score(player, final_score)
+                break
+
+            else:
+                print("You can continue exploring or complete more eco actions.")
 
 def has_item(player, item_name):
     for item in player.items:
@@ -233,6 +239,7 @@ def has_item(player, item_name):
 def check_win(player):
     has_key = has_item(player, "Key")
     has_shoes = has_item(player, "Shoes")
+    has_phone = has_item(player, "Phone")
     eco_count = len(player.eco_actions)
 
     if player.activity == "jogging":
@@ -240,6 +247,9 @@ def check_win(player):
 
     elif player.activity == "work":
         return has_key and has_shoes and eco_count >= 2
+
+    elif player.activity == "shopping":
+        return has_key and has_shoes and has_phone and eco_count >= 1
 
     return False
 
@@ -261,6 +271,9 @@ def calculate_score(player):
 
         if not has_item(player, "Laptop"):
             score -= 5
+    elif player.activity == "shopping":
+        if has_item(player, "Laptop"):
+            score -= 15
 
     return score
 

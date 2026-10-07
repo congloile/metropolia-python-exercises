@@ -12,6 +12,8 @@ Game commands:
 
 You need the Key and Shoes to leave the house.
 
+For the Shopping route, the Phone is required for payment.
+
 Other items are optional and may be useful depending on your activity.
 Once you collect an item, it cannot be removed from your inventory.
 Choose carefully before collecting an item, because your choices can affect your final score.
@@ -28,6 +30,11 @@ Work:
 - Phone missing: -10 points
 - Laptop missing: -5 points
 
+Shopping:
+- Laptop collected: -15 points
+
 Return to the Hall whenever you want to check if you are ready to leave.
+
+If the win conditions are met, you can choose to leave immediately or continue exploring to complete more eco actions and improve your score.
 
 Good luck!

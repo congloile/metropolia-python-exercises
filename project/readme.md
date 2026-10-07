@@ -20,14 +20,21 @@ The main objectives of the project are to practice:
 
 ## Gameplay
 
-The player can choose between two activities:
+The player can choose between three activities:
 
 - Jogging
 - Work
+- Shopping
 
-To leave the house, the player must collect the Key and Shoes and complete the required number of eco actions.
+Each activity has different win conditions:
+
+- **Jogging:** Key + Shoes + 3 eco actions
+- **Work:** Key + Shoes + 2 eco actions
+- **Shopping:** Key + Shoes + Phone + 1 eco action
 
 Other items are optional and may affect the final score.
+
+When the win conditions are met in the Hall, the player can either leave and finish the game or continue exploring to improve the final score.
 
 Available game commands include:
 
