@@ -1,0 +1,53 @@
+{
+    "Laura": {
+        "age": 28,
+        "activity": "shopping",
+        "location": "Kitchen",
+        "eco_actions": [
+            "Hall",
+            "Kitchen"
+        ],
+        "items": [
+            {
+                "name": "Shoes"
+            },
+            {
+                "name": "Key"
+            }
+        ]
+    },
+    "Yann": {
+        "age": 24,
+        "activity": "jogging",
+        "location": "Living Room",
+        "eco_actions": [
+            "Hall",
+            "Living Room"
+        ],
+        "items": [
+            {
+                "name": "Shoes"
+            },
+            {
+                "name": "Laptop"
+            }
+        ]
+    },
+    "Katie": {
+        "age": 30,
+        "activity": "work",
+        "location": "Bedroom",
+        "eco_actions": [
+            "Hall",
+            "Bedroom"
+        ],
+        "items": [
+            {
+                "name": "Shoes"
+            },
+            {
+                "name": "Phone"
+            }
+        ]
+    }
+}

@@ -26,6 +26,7 @@ def show_inventory(player):
     for item in player.items:
         print(f"- {item.name}")
 
+# Show the player's current room and any item in it
 def show_room(player):
     print(f"\nYou are in the {player.location.name}.")
 
@@ -84,6 +85,7 @@ def move_player(player, rooms):
 
     print("Room not found.")
 
+# Show the player's current room and any item in it
 def eco_action(player):
     room_name = player.location.name
 
@@ -131,6 +133,7 @@ def save_game(player):
 
     print(f"Game saved.")
 
+# Restore the selected player's saved game state
 def load_game(rooms):
     with open("savegames.json", "r", encoding="utf-8") as file:
         savegames = json.load(file)
@@ -164,6 +167,7 @@ def load_game(rooms):
         item = Item(item_data["name"])
         player.items.append(item)
 
+# Restore the selected player's saved game state
     for room in rooms:
         for item in player.items:
             if room.item is not None and room.item.name == item.name:
@@ -173,6 +177,7 @@ def load_game(rooms):
 
     return player
 
+# Main gameplay loop
 def game_loop(player, rooms):
     while True:
         show_room(player)
@@ -232,6 +237,7 @@ def game_loop(player, rooms):
             else:
                 print("You can continue exploring or complete more eco actions.")
 
+# Checks whether the player has a specific item in their inventory
 def has_item(player, item_name):
     for item in player.items:
         if item.name == item_name:
@@ -282,6 +288,7 @@ def calculate_score(player):
 
     return score
 
+# Update the player's high score only if the new score is higher
 def update_high_score(player, score):
     try:
         with open("highscores.json", "r", encoding="utf-8") as file:
