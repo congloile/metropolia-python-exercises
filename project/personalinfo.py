@@ -382,6 +382,18 @@ while command != "lopeta":
             if result == "end":
                 break
 
+        elif choice == "cont":
+            player = load_game(rooms)
+
+            if player is not None:
+                print(f"Welcome back, {player.name}!")
+                print(f"Your activity is: {player.activity.capitalize()}.")
+
+                result = game_loop(player, rooms)
+
+                if result == "end":
+                    break
+
     elif command == "instructions":
         show_instructions()
     elif command == "high":
