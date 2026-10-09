@@ -1,6 +1,8 @@
 import json
 import random
+from unicodedata import name
 from item import Item
+import player
 from room import Room
 from player import Player 
 
@@ -25,6 +27,16 @@ def show_inventory(player):
 
     for item in player.items:
         print(f"- {item.name}")
+
+# Check if a player profile already exists
+def player_exists(name):
+    try:
+        with open("savegames.json", "r", encoding="utf-8") as file:
+            savegames = json.load(file)
+    except FileNotFoundError:
+        return False
+
+    return name in savegames
 
 # Show the player's current room and any item in it
 def show_room(player):
@@ -342,7 +354,14 @@ while command != "lopeta":
         if choice == "new":
             show_intro()
 
-            name = input("What is your name? ")
+            while True:
+                name = input("What is your name? ")
+
+                if player_exists(name):
+                    print("This player already exists. Please choose another name.")
+                else:
+                    break
+
             age = int(input("How old are you? "))
 
             reset_rooms(rooms)
@@ -353,17 +372,8 @@ while command != "lopeta":
 
             activity = choose_activity()
             player.activity = activity
-            
+
             game_loop(player, rooms)
-
-        elif choice == "cont":
-            print("Loading...")
-            player = load_game(rooms)
-
-            if player is not None:
-                print(f"Welcome back, {player.name}!")
-                print(f"You are going {player.activity}.")
-                game_loop(player, rooms)
 
     elif command == "instructions":
         show_instructions()
