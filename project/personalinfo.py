@@ -1,6 +1,4 @@
 import json
-import random
-from unicodedata import name
 from item import Item
 import player
 from room import Room
