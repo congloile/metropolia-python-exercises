@@ -244,10 +244,16 @@ def game_loop(player, rooms):
                 print(f"Final score: {final_score}")
 
                 update_high_score(player, final_score)
-                break
 
-            else:
-                print("You can continue exploring or complete more eco actions.")
+                play_again = input("Do you want to play again? (yes/no): ").lower()
+
+                if play_again == "yes":
+                    return "menu"
+                else:
+                    return "end"
+
+        else:
+            print("You can continue exploring or complete more eco actions.")
 
 # Checks whether the player has a specific item in their inventory
 def has_item(player, item_name):
@@ -373,7 +379,10 @@ while command != "lopeta":
             activity = choose_activity()
             player.activity = activity
 
-            game_loop(player, rooms)
+            result = game_loop(player, rooms)
+
+            if result == "end":
+                break
 
     elif command == "instructions":
         show_instructions()
